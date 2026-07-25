@@ -1,0 +1,31 @@
+Feature,Type,Preprocessing,Rationale
+fraud_bool,Target (binary),None (label),Outcome: 1=fraud. 1.10% positive (90:1 imbalance).
+income,Numeric (0.1-0.9),Median impute + StandardScale,Quantile-binned income; scaled for distance/linear models.
+name_email_similarity,"Numeric [0,1]",StandardScale,String-match score; scaled.
+prev_address_months_count,Numeric + 71% -1 sentinel,"-1->NaN, median impute, +missing flag",High missingness; flag retains signal (top predictor).
+current_address_months_count,Numeric + 0.4% -1,"-1->NaN, median impute",Low missingness; median safe.
+customer_age,Numeric (binned decade),StandardScale,Scaled.
+days_since_request,Numeric,StandardScale,Right-skewed; scaled.
+intended_balcon_amount,Numeric (74% negative),StandardScale,Negative = no balance transfer intent; kept as-is.
+payment_type,Categorical (5),One-hot,Nominal; low cardinality.
+zip_count_4w,Numeric,StandardScale,Velocity count; scaled.
+velocity_6h/24h/4w,Numeric,StandardScale,Application velocity; scaled.
+bank_branch_count_8w,Numeric,StandardScale,Scaled.
+date_of_birth_distinct_emails_4w,Numeric,StandardScale,Scaled.
+employment_status,Categorical (7),One-hot,Anonymized nominal categories.
+credit_risk_score,Numeric (0.05% -1),"-1->NaN, median impute, scale",Internal score; scaled.
+email_is_free,Binary,Passthrough,Already 0/1.
+housing_status,Categorical (7),One-hot,Anonymized nominal.
+phone_home_valid,Binary,Passthrough,0/1 flag.
+phone_mobile_valid,Binary,Passthrough,0/1 flag.
+bank_months_count,Numeric + 25% -1,"-1->NaN, median impute, +missing flag",Moderate missingness; flag added.
+has_other_cards,Binary,Passthrough,0/1 flag.
+proposed_credit_limit,Numeric,StandardScale,Scaled.
+foreign_request,Binary,Passthrough,0/1 flag.
+source,Categorical (2),One-hot,INTERNET/TELEAPP.
+session_length_in_minutes,Numeric (0.2% -1),"-1->NaN, median impute, scale",Scaled.
+device_os,Categorical (5),One-hot,Nominal.
+keep_alive_session,Binary,Passthrough,0/1 flag.
+device_distinct_emails_8w,Numeric (0.04% -1),"-1->NaN, median impute, scale",Scaled.
+device_fraud_count,Constant (=0),DROPPED,Zero variance; no information.
+month,Numeric (0-7),StandardScale,Temporal index; scaled.
