@@ -1,4 +1,4 @@
-# Fraudulent Bank Account Detection — Phase 2 Deliverables
+# Fraudulent Bank Account Detection 
 
 Binary classification on the **Bank Account Fraud (BAF)** "Base" dataset
 (1,000,000 applications, target `fraud_bool`, 1.10% fraud, ~90:1 imbalance).
